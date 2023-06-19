@@ -4,31 +4,7 @@
     <title> Książka adresowa</title>
     <link rel="stylesheet" type="text/css" href="style.css">
 
-<style>
-body {
-    background-color: rgb(252, 227, 194);
 
-}
-/* Styl dla sekcji podziału */
-.split-section {
-    display: flex;
-    justify-content: space-between;
-}
-
-/* Styl dla lewej części podziału */
-.left-section {
-    float: left;
-    width: 20%;
-    padding: 20px;
-}
-
-/* Styl dla prawej części podziału */
-.right-section {
-    float: right;
-    width: 50%;
-    padding: 20px;
-}
-</style>
 </head>
 <body>
 <div class="title-section">
@@ -39,12 +15,34 @@ body {
   <div class="left-section"> 
     <h2>Dane</h2>
     <?php // Wyświetl tabelę z bazy danych
-    include 'DataClass.php';
-    $user= new DataClass('','','','','');
-    $user->Select_All_Data();
-    echo "<a href= 'index.php'> Wróć do strony głównej</a>"
+    include 'AdressDataMenager.php';
+    
+    $data= new AdressDataMenager();
+    $tableData= $data -> SelectAllData($conn);
+
+    if(!empty($tableData)){
+        echo '<table border="1" cellpadding="10" cellspacing="0">';
+        echo "<tr><th>Id użytkownika</th><th>Imię</th><th>Nazwisko</th><th>Numer telefonu</th><th>Miasto</th><th>Ulica</th></tr>";
+     
+        foreach($tableData as $row){
+            echo "<tr>";
+            echo "<td>".$row['id']."</td>";
+            echo "<td>".$row['imie']."</td>";
+            echo "<td>".$row['nazwisko']."</td>";
+            echo "<td>".$row['numer_telefornu']."</td>";
+            echo "<td>".$row['miasto']."</td>";
+            echo "<td>".$row['ulica']."</td>";
+            echo "</tr>";
+        }
+        echo '</table>';
+    } else {
+        echo "Brak danych";
+    }
+
+    
 
 ?>
+<a href= 'index.php'> Wróć do strony głównej</a>
 
   </div>
 
@@ -89,15 +87,14 @@ body {
 
 </form>
 
-    <form action="DeleteData.php" method="POST">
+        <form action="DeleteData.php" method="GET">
         <h2> Usuń dane:</h2>
         <div class="form-row">
         <label for="ID">ID:</label>
         <input type="text" name="ID"id = "ID"/>
         </div>
         <input type = "submit" value="Usuń komórkę">
-
-    </form>
+        </form>
 
 
   </div>

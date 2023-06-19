@@ -7,33 +7,32 @@
 </head>
 <body>
 <?php
-    include 'DataClass.php';
-    if($_SERVER["REQUEST_METHOD"]=== "POST"){
+    include 'AdressDataMenager.php';
 
-        $id = $_POST['ID'];
-        
+    if($_SERVER["REQUEST_METHOD"]=== "GET"){
+
+        $id = $_GET['ID'];
+
+        $user= new AdressDataMenager();
         
 
         if(!empty($id)){ 
-            
-               $user= new DataClass('','','','','');
-                
-               $user ->Delete_Data($id);
-            
+               $user ->DeleteData($id, $conn);  
+               echo "Komórka została usunięta";
             
         }
         else{
             echo "Empty form. Try again</br>";
         }
 
-    
-
     }
     
-    echo "<br/><a href= 'index.php'> Strona główna</a><br/>";
-    echo "<br/><a href= 'ZapisaneDane.php'> Wyświetl, Edytuj dane</a>";
-
 ?>
+
+<br/>
+<a href= 'index.php'> Strona główna</a>
+<br/><br/>
+<a href= 'ZapisaneDane.php'> Wyświetl, Edytuj dane</a>
 
 </body>
 </html>

@@ -7,7 +7,7 @@
 <body>
     <h1> Książka adresowa</h1>
 
-<form action="adres.php" method="POST">
+<form action="AddAdress.php" method="POST">
     
 <div class="form-row">
     <label for="imie">Imię:</label>
@@ -21,7 +21,7 @@
   
   <div class="form-row">
     <label for="imie">Numer telefonu:</label>
-    <td><input type="text" name="numerTel" id ="numerTel"/>
+    <input type="text" name="numerTel" id ="numerTel"/>
   </div>
 
   <div class="form-row">
@@ -35,15 +35,15 @@
     <input type="text" name="ulica"id ="ulica" />
   </div>
 
-
 <input type = "submit" value="Zapisz">
-
 </form>
+
+
 <form action="ZapisaneDane.php" method= "POST">
 <input type = "submit" value="Wyświetl Edytuj dane">
 </form>
 
-</form>
+
 
 
 </body>

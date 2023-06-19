@@ -33,5 +33,23 @@ h1, h2 {
     margin-right: 10px;
     text-align: right;
   }
-  
+  /* Styl dla sekcji podziału */
+.split-section {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* Styl dla lewej części podziału */
+.left-section {
+    float: left;
+    width: 20%;
+    padding: 20px;
+}
+
+/* Styl dla prawej części podziału */
+.right-section {
+    float: right;
+    width: 50%;
+    padding: 20px;
+}
 
